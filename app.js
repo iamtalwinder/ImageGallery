@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "./dotenv";
+import query from "./src/utils/mysqlQuery";
 
 const app = express();
 
