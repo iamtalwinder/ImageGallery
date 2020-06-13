@@ -40,16 +40,15 @@ const upload = multer({
 router.post("/upload", verifyAuthToken, (req, res) => {
 	upload(req, res, async (err) => {
 		if (err) {
-			res.status(401).send(err.message);
+			res.status(400).send(err.message);
 		} else if (req.files === undefined) {
-			res.status(401).send("Select atleast one file");
+			res.status(400).send("Select atleast one file");
 		} else {
 			try {
 				let files = [];
 				for (let file of req.files) {
 					files.push([req.user.userId, file.path]);
 				}
-				console.log(files);
 				await query("INSERT INTO upload VALUES ?", [files]);
 				res.status(200).send("uploaded");
 			} catch (err) {

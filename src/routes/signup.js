@@ -15,7 +15,7 @@ router.post("/sign-up", async (req, res) => {
 			.send('"Password" and "Confirm Password" fileds must be same');
 
 	try {
-		const salt = await bcrypt.genSal(10);
+		const salt = await bcrypt.genSalt(10);
 		const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
 		const userInformation = [
