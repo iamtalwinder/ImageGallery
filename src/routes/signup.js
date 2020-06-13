@@ -1,6 +1,6 @@
 import express from "express";
 import bcrypt from "bcryptjs";
-import query from "../utils/mysqlQuery";
+import query from "../database/mysqlQuery";
 import signupValidation from "../validation/signup";
 
 const router = express.Router();

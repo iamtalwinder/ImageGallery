@@ -1,7 +1,7 @@
 import express from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import query from "../utils/mysqlQuery";
+import query from "../database/mysqlQuery";
 import signinValidation from "../validation/signin";
 
 const router = express.Router();
