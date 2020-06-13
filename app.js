@@ -6,6 +6,7 @@ import dotenv from "./dotenv";
 import signup from "./src/routes/signup";
 import signin from "./src/routes/signin";
 import signout from "./src/routes/signout";
+import refreshAuthToken from "./src/routes/refreshAuthToken";
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(cookieParser());
 app.use("/api/user", signup);
 app.use("/api/user", signin);
 app.use("/api/user", signout);
+app.use("/api/user", refreshAuthToken);
 
 app.listen(process.env.PORT, () =>
 	console.log(`Running on PORT: ${process.env.PORT}`)
