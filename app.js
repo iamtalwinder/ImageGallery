@@ -7,6 +7,7 @@ import signup from "./src/routes/signup";
 import signin from "./src/routes/signin";
 import signout from "./src/routes/signout";
 import refreshAuthToken from "./src/routes/refreshAuthToken";
+import upload from "./src/routes/upload";
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use("/api/user", signup);
 app.use("/api/user", signin);
 app.use("/api/user", signout);
 app.use("/api/user", refreshAuthToken);
+app.use("/api/user", upload);
 
 app.listen(process.env.PORT, () =>
 	console.log(`Running on PORT: ${process.env.PORT}`)
