@@ -18,15 +18,15 @@ function Dashboard(props) {
 	};
 
 	const active = (event) => {
-		document.getElementsByClassName("active")[0].className = "";
-		event.target.className = "active";
+		document.getElementsByClassName("active-nav")[0].className = "";
+		event.target.className = "active-nav";
 	};
 
 	return (
 		<div className="dashboard-container">
 			<ul className="nav-container">
 				<li
-					className="active"
+					className="active-nav"
 					onClick={(event) => {
 						active(event);
 						setFileUploader(false);

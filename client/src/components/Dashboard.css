@@ -22,11 +22,11 @@
 	text-decoration: none;
 }
 
-.nav-container > li:hover:not(.active) {
+.nav-container > li:hover:not(.active-nav) {
 	background-color: #111;
 }
 
-.active {
+.active-nav {
 	background-color: #4caf50;
 }
 
