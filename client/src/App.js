@@ -13,7 +13,7 @@ function App() {
 	return (
 		<React.Fragment>
 			<Router>
-				{check()}
+				{checkIfSignedIn()}
 				<Switch>
 					<Route exact path="/" component={SignIn} />
 					<Route exact path="/sign-up" component={SignUp} />
@@ -25,7 +25,7 @@ function App() {
 }
 
 function ProtectedRoute({ component: Component, ...rest }) {
-	if (!localStorage.getItem("expiresIn")) {
+	if (localStorage.getItem("signedIn") !== "yes") {
 		return <Redirect to="/" />;
 	}
 
@@ -39,8 +39,9 @@ function ProtectedRoute({ component: Component, ...rest }) {
 	);
 }
 
-function check() {
-	if (localStorage.getItem("expiresIn")) return <Redirect to="/dashboard" />;
+function checkIfSignedIn() {
+	if (localStorage.getItem("signedIn") === "yes")
+		return <Redirect to="/dashboard" />;
 }
 
 export default App;

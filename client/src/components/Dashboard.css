@@ -1,9 +1,16 @@
+.dashboard-container {
+	margin: 10vh auto;
+}
+
 .nav-container {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
 	background-color: #333;
+	position: fixed;
+	width: 100vw;
+	top: 0;
 }
 
 .nav-container > li {
@@ -23,20 +30,36 @@
 	background-color: #4caf50;
 }
 
+.nav-container > li:last-child {
+	float: right;
+}
+
 @media only screen and (min-width: 760px) {
 	.dashboard-container {
 		width: 80vw;
-		margin: auto;
 	}
 
-	.nav-container > li:last-child {
-		float: right;
+	.nav-container {
+		width: 80vw;
 	}
 }
 
 @media only screen and (min-width: 960px) {
 	.dashboard-container {
+		width: 70vw;
+	}
+
+	.nav-container {
+		width: 70vw;
+	}
+}
+
+@media only screen and (min-width: 1200px) {
+	.dashboard-container {
 		width: 60vw;
-		margin: auto;
+	}
+
+	.nav-container {
+		width: 60vw;
 	}
 }

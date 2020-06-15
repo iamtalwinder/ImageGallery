@@ -15,8 +15,15 @@ function SignIn(props) {
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		try {
-			const response = await axios.post("/api/user/sign-in", data);
-			localStorage.setItem("expiresIn", response.data.expiresIn);
+			await axios.post("/api/user/sign-in", data);
+			localStorage.setItem("signedIn", "yes");
+
+			window.addEventListener("storage", () => {
+				if (localStorage.getItem("signedIn") === "no") {
+					props.history.push("/");
+				}
+			});
+
 			props.history.push("/dashboard");
 		} catch (err) {
 			if (err.response) {

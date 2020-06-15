@@ -1,32 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import FileUploader from "./FileUploader";
+import ViewImages from "./ViewImages";
 import "./Dashboard.css";
-
-const refreshToken = async () => {
-	try {
-		await axios.get("/api/user/refresh-auth-token");
-	} catch (err) {
-		alert("Network error");
-	}
-};
 
 function Dashboard(props) {
 	const [fileUploader, setFileUploader] = useState(false);
 
-	useEffect(() => {
-		refreshToken();
-		const ID = setInterval(refreshToken, 840000);
-		return () => {
-			clearInterval(ID);
-			localStorage.clear("expiresIn");
-		};
-	}, []);
-
 	const signout = async () => {
 		try {
 			await axios.delete("/api/user/sign-out");
-			localStorage.clear("expiresIn");
+			localStorage.setItem("signedIn", "no");
 			props.history.push("/");
 		} catch (err) {
 			alert("Network error");
@@ -41,7 +25,13 @@ function Dashboard(props) {
 	return (
 		<div className="dashboard-container">
 			<ul className="nav-container">
-				<li className="active" onClick={active}>
+				<li
+					className="active"
+					onClick={(event) => {
+						active(event);
+						setFileUploader(false);
+					}}
+				>
 					View Images
 				</li>
 				<li
@@ -50,12 +40,13 @@ function Dashboard(props) {
 						setFileUploader(true);
 					}}
 				>
-					Upload Images
+					Upload
 				</li>
 				<li onClick={signout}>SignOut</li>
 			</ul>
 
 			{fileUploader && <FileUploader />}
+			{!fileUploader && <ViewImages />}
 		</div>
 	);
 }

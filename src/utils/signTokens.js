@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-export default (userId, authExpiration = "4s", refreshExpiration = "1d") => {
+export default (userId, authExpiration = "1m", refreshExpiration = "1d") => {
 	const authToken = jwt.sign(
 		{
 			userId: userId,
