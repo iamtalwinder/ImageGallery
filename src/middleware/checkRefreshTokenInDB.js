@@ -1,10 +1,9 @@
-import query from "./mysqlQuery";
+import query from "../database/mysqlQuery";
 
 const checkRefereshTokenInDB = async (req, res, next) => {
 	try {
-		const refreshToken = req.cookies.refreshToken;
 		await query(
-			`SELECT userId FROM refreshToken WHERE refreshToken="${refreshToken}"`
+			`SELECT userId FROM refreshToken WHERE refreshToken="${req.refreshToken}"`
 		);
 		next();
 	} catch (err) {

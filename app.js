@@ -1,6 +1,9 @@
 import express from "express";
+import "./dotenv";
+
+//Import middlewares
 import cookieParser from "cookie-parser";
-import dotenv from "./dotenv";
+import extractTokens from "./src/middleware/extractTokens";
 
 //Import routes
 import signup from "./src/routes/sign-up";
@@ -15,6 +18,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(extractTokens);
 
 //Add routes
 app.use("/api/user", signup);

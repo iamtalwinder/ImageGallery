@@ -1,8 +1,8 @@
 import express from "express";
 import jwt from "jsonwebtoken";
 
-import verifyRefreshToken from "../verification/verifyRefreshToken";
-import checkRefereshTokenInDB from "../database/checkRefreshTokenInDB";
+import verifyRefreshToken from "../middleware/verifyRefreshToken";
+import checkRefereshTokenInDB from "../middleware/checkRefreshTokenInDB";
 
 const router = express.Router();
 

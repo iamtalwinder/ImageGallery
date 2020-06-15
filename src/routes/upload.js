@@ -5,7 +5,7 @@ import fs from "fs";
 import { v4 as uuidv4 } from "uuid";
 
 import query from "../database/mysqlQuery";
-import verifyAuthToken from "../verification/verifyAuthToken";
+import verifyAuthToken from "../middleware/verifyAuthToken";
 
 const router = express.Router();
 

@@ -1,6 +1,6 @@
 import express from "express";
 import query from "../database/mysqlQuery";
-import verifyAuthToken from "../verification/verifyAuthToken";
+import verifyAuthToken from "../middleware/verifyAuthToken";
 
 const router = express.Router();
 
