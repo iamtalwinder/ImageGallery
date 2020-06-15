@@ -9,7 +9,7 @@ router.get("/", async (req, res) => {
 		if (req.query.start && req.query.limit) {
 			result = await query(
 				`SELECT path FROM 
-                (SELECT path FROM upload WHERE userId = ${req.user.userId}) AS u 
+                (SELECT path FROM upload WHERE userId = ${req.user.userId} ORDER BY date) AS u 
                 LIMIT ${req.query.start}, ${req.query.limit};`
 			);
 		} else {

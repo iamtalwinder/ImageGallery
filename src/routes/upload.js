@@ -48,7 +48,7 @@ router.post("/", (req, res) => {
 				for (let file of req.files) {
 					files.push([req.user.userId, file.path]);
 				}
-				await query("INSERT INTO upload VALUES ?", [files]);
+				await query("INSERT INTO upload (userId, path) VALUES ?", [files]);
 				res.status(200).send("uploaded");
 			} catch (err) {
 				console.log(err);
