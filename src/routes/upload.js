@@ -41,7 +41,7 @@ router.post("/upload", verifyAuthToken, (req, res) => {
 	upload(req, res, async (err) => {
 		if (err) {
 			res.status(400).send(err.message);
-		} else if (req.files === undefined) {
+		} else if (!req.files.length) {
 			res.status(400).send("Select atleast one file");
 		} else {
 			try {

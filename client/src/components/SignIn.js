@@ -1,16 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Form.css";
-import Dashboard from "./Dashboard";
 
 function SignIn(props) {
 	const [data, setData] = useState({
 		email: "",
 		password: "",
 	});
-
-	const [dashboard, setDashboard] = useState(false);
-	let expiresIn;
 
 	const handleChange = (event) => {
 		setData({ ...data, [event.target.name]: event.target.value });
@@ -20,8 +16,8 @@ function SignIn(props) {
 		event.preventDefault();
 		try {
 			const response = await axios.post("/api/user/sign-in", data);
-			expiresIn = response.data.expiresIn;
-			setDashboard(true);
+			localStorage.setItem("expiresIn", response.data.expiresIn);
+			props.history.push("/dashboard");
 		} catch (err) {
 			if (err.response) {
 				alert(err.response.data);
@@ -31,8 +27,6 @@ function SignIn(props) {
 		}
 	};
 
-	if (dashboard)
-		return <Dashboard expiresIn={expiresIn} setDashboard={setDashboard} />;
 	return (
 		<form className="form" onSubmit={handleSubmit}>
 			<h3 className="form-header">SignIn</h3>

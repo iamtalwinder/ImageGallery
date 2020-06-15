@@ -1,0 +1,62 @@
+.container {
+	width: 85%;
+	margin: 5% auto;
+	padding: 1%;
+	box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.2);
+	transition: 0.3s;
+	font-size: 15px;
+}
+
+.container:hover {
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (min-width: 760px) {
+	.container {
+		width: 60%;
+	}
+}
+
+@media screen and (min-width: 960px) {
+	.container {
+		width: 50%;
+	}
+}
+
+#inputFile {
+	display: none;
+}
+
+.browse,
+.upload {
+	background-color: #4caf50;
+	border: 2px solid #3c853f;
+	border-radius: 4px;
+	color: #ffffff;
+	outline: none;
+	font-family: sans-serif;
+	width: 48%;
+	margin: 0 1% 3% 1%;
+	font-weight: bold;
+	cursor: pointer;
+	font-size: 1em;
+	padding: 0.5em 0.8em;
+}
+
+.browse:active,
+.upload:active {
+	background-color: #3c853f;
+}
+
+.fileName {
+	width: 97%;
+	max-width: 97%;
+	margin: 3% auto;
+	border: 1px solid #3c853f;
+	border-radius: 30px;
+	padding: 0.3em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 1.1em;
+	white-space: nowrap;
+}

@@ -1,0 +1,42 @@
+.nav-container {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
+}
+
+.nav-container > li {
+	float: left;
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+.nav-container > li:hover:not(.active) {
+	background-color: #111;
+}
+
+.active {
+	background-color: #4caf50;
+}
+
+@media only screen and (min-width: 760px) {
+	.dashboard-container {
+		width: 80vw;
+		margin: auto;
+	}
+
+	.nav-container > li:last-child {
+		float: right;
+	}
+}
+
+@media only screen and (min-width: 960px) {
+	.dashboard-container {
+		width: 60vw;
+		margin: auto;
+	}
+}
