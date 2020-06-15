@@ -1,4 +1,5 @@
 import express from "express";
+import path from "path";
 import "./dotenv";
 
 //Import middlewares
@@ -17,6 +18,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 //Add routes
 app.use("/api/user/sign-up", signup);
