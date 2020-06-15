@@ -5,7 +5,6 @@ import fs from "fs";
 import { v4 as uuidv4 } from "uuid";
 
 import query from "../database/mysqlQuery";
-import verifyAuthToken from "../middleware/verifyAuthToken";
 
 const router = express.Router();
 
@@ -37,7 +36,7 @@ const upload = multer({
 	},
 }).array("file");
 
-router.post("/upload", verifyAuthToken, (req, res) => {
+router.post("/", (req, res) => {
 	upload(req, res, async (err) => {
 		if (err) {
 			res.status(400).send(err.message);

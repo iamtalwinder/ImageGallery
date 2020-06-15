@@ -5,7 +5,7 @@ import signupValidation from "../validation/signup";
 
 const router = express.Router();
 
-router.post("/sign-up", async (req, res) => {
+router.post("/", async (req, res) => {
 	const { error } = signupValidation(req.body);
 	if (error) return res.status(406).send(error.details[0].message);
 

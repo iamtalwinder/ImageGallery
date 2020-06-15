@@ -1,12 +1,12 @@
 import express from "express";
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
 import query from "../database/mysqlQuery";
 import signinValidation from "../validation/signin";
+import signTokens from "../utils/signTokens";
 
 const router = express.Router();
 
-router.post("/sign-in", async (req, res) => {
+router.post("/", async (req, res) => {
 	const { error } = signinValidation(req.body);
 	if (error) return res.status(400).send(error.details[0].message);
 
@@ -31,22 +31,7 @@ router.post("/sign-in", async (req, res) => {
 			return res.status(400).send("Wrong E-mail or password.");
 		}
 
-		//Create auth token
-		const authToken = jwt.sign(
-			{
-				userId: result[0].userId,
-			},
-			process.env.AUTH_TOKEN_SECRET,
-			{ expiresIn: "15m" }
-		);
-
-		//Create refresh token
-		const refreshToken = jwt.sign(
-			{
-				userId: result[0].userId,
-			},
-			process.env.REFRESH_TOKEN_SECRET
-		);
+		const [authToken, refreshToken] = signTokens(result[0].userId);
 
 		//Push token in database
 		await query(

@@ -1,10 +1,9 @@
 import express from "express";
 import query from "../database/mysqlQuery";
-import verifyAuthToken from "../middleware/verifyAuthToken";
 
 const router = express.Router();
 
-router.get("/image-count", verifyAuthToken, async (req, res) => {
+router.get("/", async (req, res) => {
 	try {
 		const result = await query(
 			`SELECT count(path) AS count FROM (SELECT path FROM upload WHERE userId=${req.user.userId}) AS u`

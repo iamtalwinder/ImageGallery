@@ -1,10 +1,9 @@
 import express from "express";
 import query from "../database/mysqlQuery";
-import verifyAuthToken from "../middleware/verifyAuthToken";
 
 const router = express.Router();
 
-router.get("/get-images", verifyAuthToken, async (req, res) => {
+router.get("/", async (req, res) => {
 	try {
 		let result;
 		if (req.query.start && req.query.limit) {

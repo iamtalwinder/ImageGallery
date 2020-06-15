@@ -1,10 +1,9 @@
 import express from "express";
 import query from "../database/mysqlQuery";
-import verifyAuthToken from "../middleware/verifyAuthToken";
 
 const router = express.Router();
 
-router.delete("/sign-out", verifyAuthToken, async (req, res) => {
+router.delete("/", async (req, res) => {
 	try {
 		const refreshToken = req.cookies.refreshToken;
 		await query(
